@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanggar Tri Arga - Seni dan Pertunjukan</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#beranda" class="logo">
+                <img src="images/logo.png" alt="Logo Sanggar Tri Arga" class="logo-img">
+                <span>SANGGAR <strong>TRI ARGA</strong></span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#beranda" class="nav-link active">Beranda</a>
+                <a href="#galeri" class="nav-link">Galeri</a>
+                <a href="#paket" class="nav-link">Paket</a>
+                <a href="#barang" class="nav-link">Kostum dan Alat</a>
+                <a href="#kalender" class="nav-link">Kalender</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-small btn-yellow">Masuk</a>
+                <a href="register.html" class="btn-small btn-yellow">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <section class="page-section hero" id="beranda">
+            <div class="hero-content">
+                <p class="eyebrow">✦ SENI • BUDAYA • PERTUNJUKAN ✦</p>
+                <h1>Hadirkan Seni di Setiap Momen</h1>
+                <p class="hero-description">
+                    Temukan paket pertunjukan tari dan musik, kostum, serta perlengkapan untuk melengkapi acara spesial Anda dengan nuansa budaya nusantara.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#paket" class="btn-primary">Lihat Paket</a>
+                    <!-- Tombol Buat Pesanan yang diproteksi oleh modal pop-up -->
+                    <button type="button" class="btn-primary" id="btnBuatPesanan">Buat Pesanan</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section section" id="galeri">
+            <div class="inner-content">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">05 — GALERI</p>
+                        <h2>Momen Pertunjukan Kami</h2>
+                    </div>
+                    <a href="https://instagram.com/triarga_dc" target="_blank" class="instagram-link">
+                        Lihat lebih lengkapnya di Instagram <strong>@triarga_dc</strong> 
+                    </a>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <img src="images/tari tradisisonal.png" alt="Tari Tradisional">
+                        <span>Tari Tradisional</span>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pertunjukan tari.png" alt="Pertunjukan Tari">
+                        <span>Pertunjukan Tari</span>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/musik & karawitan.png" alt="Musik dan Karawitan">
+                        <span>Musik dan Karawitan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section packages section" id="paket">
+            <div class="inner-content">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">01 — PERTUNJUKAN</p>
+                        <h2>Pilih Pertunjukan untuk Acara Anda</h2>
+                    </div>
+                </div>
+
+                <div class="package-grid" id="daftarPaket"></div>
+
+                <div class="addons-navy-banner">
+                    <div class="addons-text">
+                        <p class="section-label-gold">02 — OPSI TAMBAHAN</p>
+                        <h2>Sesuaikan Kebutuhan Acara Anda</h2>
+                        <p>Tambahkan kebutuhan ekstra pada pesanan Anda sesuai dengan konsep acara.</p>
+                    </div>
+
+                    <div class="addons-list-box" id="daftarAddon"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="page-section section" id="barang">
+            <div class="inner-content">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">03 — KATALOG BARANG</p>
+                        <h2>Kostum dan Alat Musik</h2>
+                    </div>
+                </div>
+
+                <div class="inventory-grid">
+                    <a href="kostum.html" class="inventory-card">
+                        <div class="inventory-image costume" style="background-image: url('images/coverbajuadat.png'); background-size: cover; background-position: center; position: relative;">
+                            <div style="position: absolute; inset: 0; background: rgba(74, 18, 21, 0.45); display: flex; align-items: center; justify-content: center;">
+                                <span style="font-family: 'Times New Roman', Times, serif; font-size: 26px; color: var(--gold); font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">KOSTUM</span>
+                            </div>
+                        </div>
+                        <div class="inventory-info">
+                            <div>
+                                <h3>Kostum Tari</h3>
+                                <p>Koleksi Kostum untuk Pertunjukan</p>
+                            </div>
+                            <span class="inventory-btn-link">LIHAT KATALOG</span>
+                        </div>
+                    </a>
+
+                    <a href="alat-musik.html" class="inventory-card">
+                        <div class="inventory-image instrument" style="background-image: url('images/coverkatalogalatmusik.png'); background-size: cover; background-position: center; position: relative;">
+                            <div style="position: absolute; inset: 0; background: rgba(13, 22, 38, 0.45); display: flex; align-items: center; justify-content: center;">
+                                <span style="font-family: 'Times New Roman', Times, serif; font-size: 26px; color: var(--gold); font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">ALAT MUSIK</span>
+                            </div>
+                        </div>
+                        <div class="inventory-info">
+                            <div>
+                                <h3>Alat Musik</h3>
+                                <p>Gamelan, Kendang, Flute, Keyboard</p>
+                            </div>
+                            <span class="inventory-btn-link">LIHAT KATALOG</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section calendar-preview section" id="kalender">
+            <div class="inner-content">
+                <div class="calendar-box">
+                    <div class="calendar-text">
+                        <p class="section-label">04 — KETERSEDIAAN</p>
+                        <h2>Cek Tanggal Acara Anda</h2>
+                        <p>
+                            Maksimal 3 acara dapat diterima dalam satu hari. Status tanggal akan diperbarui secara realtime oleh owner berdasarkan pesanan masuk.
+                        </p>
+                    </div>
+
+                    <div class="mini-calendar">
+                        <div class="calendar-header">
+                            <strong id="calendar-month-year">Oktober 2026</strong>
+                            <span><span id="prevBulan" style="cursor:pointer">‹</span> &nbsp; <span id="nextBulan" style="cursor:pointer">›</span></span>
+                        </div>
+                        <div class="calendar-days">
+                            <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+                        </div>
+                        <div class="calendar-dates" id="realtime-calendar-dates"></div>
+                        <div class="calendar-legend">
+                            <span><i class="available-dot"></i> Tersedia</span>
+                            <span><i class="busy-dot"></i> Terbatas</span>
+                            <span><i class="full-dot"></i> Penuh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">⚠️</div>
+            <h3>Akun Diperlukan</h3>
+            <p>Anda belum masuk atau sesi Anda telah berakhir. Silakan masuk atau daftar akun terlebih dahulu untuk melanjutkan pemesanan.</p>
+            <div class="modal-actions">
+                <a href="login.html" class="btn-modal btn-modal-primary">Masuk Akun</a>
+                <a href="register.html" class="btn-modal btn-modal-secondary">Daftar Baru</a>
+            </div>
+            <button type="button" id="closeModal" class="modal-close-text">Tutup</button>
+        </div>
+    </div>
+
+        <script src="js/api.js"></script>
+    <script>
+        (async function () {
+            // ---------- 1. Paket pertunjukan ----------
+            const warna = ['card-navy', 'card-red', 'card-yellow'];
+            const ikon  = ['✦', '◇', '♫'];
+            try {
+                const paket = await api('/packages');
+                document.getElementById('daftarPaket').innerHTML = paket.map((p, i) => `
+                    <article class="package-card ${warna[i % 3]}">
+                        <div class="package-top">
+                            <span class="package-number">${String(i + 1).padStart(2, '0')}</span>
+                            <span class="status available">Tersedia</span>
+                        </div>
+                        <div class="package-icon">${ikon[i % 3]}</div>
+                        <h3>${esc(p.name)}</h3>
+                        <p>${esc(p.description)}</p>
+                        <div class="package-bottom">
+                            <small>Mulai dari</small>
+                            <strong>${rupiah(p.price)}</strong>
+                        </div>
+                    </article>`).join('');
+            } catch (e) {
+                document.getElementById('daftarPaket').textContent = 'Paket gagal dimuat: ' + e.message;
+            }
+
+            // ---------- 2. Opsi tambahan (add-on) ----------
+            try {
+                const addons = await api('/addons');
+                document.getElementById('daftarAddon').innerHTML = addons.map(a => `
+                    <div class="addon-item">
+                        <div class="addon-item-info">
+                            <h4>${esc(a.name)}</h4>
+                            <p>${esc(a.description)}</p>
+                        </div>
+                        <span class="addon-item-price">+${rupiah(a.price)}</span>
+                    </div>`).join('');
+            } catch (e) {
+                document.getElementById('daftarAddon').textContent = 'Add-on gagal dimuat: ' + e.message;
+            }
+
+            // ---------- 3. Kalender ketersediaan ----------
+            const NAMA_BULAN = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            const pad = n => String(n).padStart(2, '0');
+            const sekarang = new Date();
+            let tahun = sekarang.getFullYear();
+            let bulan = sekarang.getMonth();          // 0 = Januari
+            const tglHariIni = `${tahun}-${pad(bulan + 1)}-${pad(sekarang.getDate())}`;
+
+            async function tampilKalender() {
+                const jumlahHari = new Date(tahun, bulan + 1, 0).getDate();
+                const hariPertama = new Date(tahun, bulan, 1).getDay();   // 0 = Minggu
+                const dari   = `${tahun}-${pad(bulan + 1)}-01`;
+                const sampai = `${tahun}-${pad(bulan + 1)}-${pad(jumlahHari)}`;
+                const kotak  = document.getElementById('realtime-calendar-dates');
+
+                document.getElementById('calendar-month-year').textContent = `${NAMA_BULAN[bulan]} ${tahun}`;
+
+                const status = {};
+                try {
+                    (await api(`/calendar?from=${dari}&to=${sampai}`)).forEach(x => status[x.date] = x);
+                } catch (e) {
+                    kotak.innerHTML = '<span style="grid-column: 1 / -1">Kalender gagal dimuat.</span>';
+                    return;
+                }
+
+                let html = '<span></span>'.repeat(hariPertama);
+                for (let d = 1; d <= jumlahHari; d++) {
+                    const tgl = `${tahun}-${pad(bulan + 1)}-${pad(d)}`;
+                    const s = status[tgl];
+                    let warna = 'var(--green)', judul = 'Tersedia';
+                    if (s && s.is_full)                  { warna = 'var(--red-bright)';    judul = 'Penuh'; }
+                    else if (s && s.available_slots === 1) { warna = 'var(--orange-bright)'; judul = 'Terbatas (sisa 1 slot)'; }
+
+                    const lewat = tgl < tglHariIni;
+                    html += lewat
+                        ? `<span style="opacity: .35">${d}</span>`
+                        : `<span title="${judul}" style="box-shadow: inset 0 -4px 0 ${warna}">${d}</span>`;
+                }
+                kotak.innerHTML = html;
+            }
+
+            document.getElementById('prevBulan').addEventListener('click', () => {
+                bulan--; if (bulan < 0) { bulan = 11; tahun--; }
+                tampilKalender();
+            });
+            document.getElementById('nextBulan').addEventListener('click', () => {
+                bulan++; if (bulan > 11) { bulan = 0; tahun++; }
+                tampilKalender();
+            });
+            tampilKalender();
+        })();
+    </script>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.page-section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Logika Pengecekan Tombol "Buat Pesanan"
+        const btnBuatPesanan = document.getElementById('btnBuatPesanan');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+
+        btnBuatPesanan.addEventListener('click', () => {
+            const isSessionActive = localStorage.getItem('token') ? 'true' : 'false';
+
+            if (isSessionActive === 'true') {
+                window.location.href = 'pesan.html';
+            } else {
+                loginModal.style.display = 'flex';
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+@extends('layouts.app')
+@section('title','Dashboard Korlap')
+@push('styles')<style>.wrap{max-width:1050px;margin:35px auto;padding:0 18px}.wrap h1{color:#682b4b}.card{background:#fff;border:1px solid #eadfc8;border-radius:12px;padding:18px;margin:12px 0}.muted{color:#777;font-size:13px}a{color:#762c50;font-weight:bold}</style>@endpush
+@section('content')<main class="wrap"><h1>Dashboard Korlap</h1><p>Halo, {{ auth()->user()->name }}. Berikut acara yang ditugaskan kepada Anda.</p>@forelse($acara as $a)<section class="card"><h3>{{ $a->code }} · {{ $a->package->name }}</h3><p class="muted">Pelanggan: {{ $a->customer->name }} · {{ $a->event_date->format('d/m/Y') }} {{ $a->event_time ? substr((string)$a->event_time,0,5) : '' }}</p><p>{{ $a->event_location }}</p><a href="{{ route('korlap.acara.show',$a) }}">Atur Pembagian Tugas →</a></section>@empty<section class="card">Belum ada acara yang ditugaskan kepada Anda.</section>@endforelse</main>@endsection

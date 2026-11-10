@@ -1,0 +1,17 @@
+/* Pesan hasil proses (berhasil / gagal) di halaman login & daftar */
+.auth-alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    background: rgba(192, 57, 43, .10);
+    color: #c0392b;
+    border: 1px solid rgba(192, 57, 43, .30);
+}
+.auth-alert.sukses {
+    background: rgba(46, 125, 50, .10);
+    color: #2e7d32;
+    border-color: rgba(46, 125, 50, .30);
+}

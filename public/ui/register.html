@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - Sanggar Tri Arga</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #f4ebd0;
+        }
+        .auth-card {
+            background: #fdfbf7;
+            width: min(480px, 100%);
+            padding: 40px 35px;
+            border-radius: 16px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .auth-logo {
+            height: 60px;
+            width: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: var(--gold-light);
+            padding: 2px;
+            border: 2px solid var(--gold);
+            margin-bottom: 12px;
+        }
+        .auth-header h2 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 28px;
+            color: var(--maroon);
+            font-weight: 700;
+        }
+        .auth-header p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 6px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #d4c5a9;
+            background: #ffffff;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--navy);
+        }
+        .error-msg {
+            color: #d9534f;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        .btn-auth {
+            width: 100%;
+            background: var(--gold);
+            color: var(--maroon-dark);
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--gold);
+            transition: 0.25s;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+        }
+        .btn-auth:hover {
+            background: var(--gold-light);
+        }
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+        .auth-footer a {
+            color: #0055ff;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="auth-section">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="images/logo.png" alt="Logo Sanggar Tri Arga" class="auth-logo">
+                <h2>Sign Up (Daftar)</h2>
+                <p>Buat akun baru untuk mulai memesan pertunjukan</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regNama">Nama Lengkap</label>
+                    <input type="text" id="regNama" required placeholder="Masukkan nama lengkap">
+                    <div class="error-msg" id="errNama">Nama lengkap wajib diisi.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required placeholder="contoh@email.com">
+                    <div class="error-msg" id="errEmail">Format email tidak valid atau kosong.</div>
+                </div>
+
+                <div class="form-group">
+    <label for="regPhone">Nomor WhatsApp</label>
+    <input type="tel" id="regPhone" required placeholder="Contoh: 081234567890">
+    <div class="error-msg" id="errPhone">Nomor WhatsApp wajib diisi (minimal 9 digit).</div>
+</div>
+
+                <div class="form-group">
+                    <label for="regPass">Kata Sandi (Minimal 8 Karakter)</label>
+                    <input type="password" id="regPass" required placeholder="Minimal 8 karakter">
+                    <div class="error-msg" id="errPass">Password minimal 8 karakter.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassConfirm">Konfirmasi Kata Sandi</label>
+                    <input type="password" id="regPassConfirm" required placeholder="Ulangi kata sandi">
+                    <div class="error-msg" id="errPassConfirm">Konfirmasi password tidak sama.</div>
+                </div>
+
+                <button type="submit" class="btn-auth">Daftar Sekarang</button>
+            </form>
+
+            <div class="auth-footer">
+                Sudah memiliki akun? <a href="login.html">Masuk di sini</a>
+            </div>
+
+            <a href="index.html" class="back-home">← Kembali ke Beranda</a>
+        </div>
+    </section>
+
+    <script src="js/api.js"></script>
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const nama = document.getElementById('regNama').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const phone = document.getElementById('regPhone').value.trim();
+        const pass = document.getElementById('regPass').value;
+        const passConfirm = document.getElementById('regPassConfirm').value;
+
+        let isValid = true;
+        document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+
+        if (!nama) { document.getElementById('errNama').style.display = 'block'; isValid = false; }
+        if (!email || !email.includes('@')) { document.getElementById('errEmail').style.display = 'block'; isValid = false; }
+        if (phone.replace(/\D/g, '').length < 9) { document.getElementById('errPhone').style.display = 'block'; isValid = false; }
+        if (pass.length < 8) { document.getElementById('errPass').style.display = 'block'; isValid = false; }
+        if (pass !== passConfirm) { document.getElementById('errPassConfirm').style.display = 'block'; isValid = false; }
+        if (!isValid) return;
+
+        try {
+            await api('/auth/register', { method: 'POST', body: { name: nama, phone: phone, email: email, password: pass } });
+            alert('Registrasi berhasil! Silakan masuk.');
+            location.href = 'login.html';
+        } catch (err) {
+            // Pesan validasi dari Laravel berbahasa Inggris, jadi kita pakai teks sendiri per kolom
+            const peta = {
+                name:     ['errNama',  'Nama lengkap tidak valid.'],
+                email:    ['errEmail', 'Email tidak valid atau sudah terdaftar.'],
+                phone:    ['errPhone', 'Nomor WhatsApp tidak valid atau sudah terdaftar.'],
+                password: ['errPass',  'Password minimal 8 karakter.'],
+            };
+            if (err.errors) {
+                Object.keys(err.errors).forEach(k => {
+                    if (!peta[k]) return;
+                    const el = document.getElementById(peta[k][0]);
+                    el.textContent = peta[k][1];
+                    el.style.display = 'block';
+                });
+            } else {
+                alert(err.message);
+            }
+        }
+    });
+</script>
+</body>
+</html>

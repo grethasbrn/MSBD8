@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Alat Musik - Sanggar Tri Arga</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .catalog-section {
+            min-height: 100vh;
+            padding: 120px 20px 60px 20px;
+            background: #f4ebd0;
+        }
+        .catalog-container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .catalog-header p {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+        .catalog-header h1 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 38px;
+            color: var(--maroon);
+            margin-top: 5px;
+        }
+        .catalog-header p.desc {
+            color: var(--muted);
+            font-size: 15px;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        /* Grid Katalog dengan Card Vertikal */
+        .instrument-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        .instrument-card {
+            background: #fdfbf7;
+            border-radius: 14px;
+            padding: 20px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .instrument-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(74, 18, 21, 0.12);
+        }
+
+        /* Kotak Gambar yang Disamaratakan Ukurannya */
+        .instrument-img-box {
+            width: 100%;
+            height: 140px;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e6dcc6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .instrument-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .instrument-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .instrument-info h3 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            color: var(--maroon);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .instrument-info p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .instrument-badge {
+            background: rgba(13, 22, 38, 0.08);
+            color: var(--navy);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: auto;
+        }
+
+        .back-nav {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .btn-back {
+            display: inline-block;
+            background: var(--maroon);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1px solid var(--gold);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-back:hover {
+            background: var(--maroon-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="catalog-section">
+        <div class="catalog-container">
+            <div class="catalog-header">
+                <p>KATALOG INVENTARIS</p>
+                <h1>Daftar Alat Musik Sanggar Tri Arga</h1>
+                <p class="desc">Koleksi alat musik tradisional nusantara dan modern yang siap disewakan untuk melengkapi pementasan atau acara spesial Anda.</p>
+            </div>
+
+            <div class="instrument-grid" id="daftarAlat"></div>
+
+            <div class="back-nav">
+                <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+            </div>
+        </div>
+    </section>
+    <script src="js/api.js"></script>
+    <script>
+        const KATEGORI = 'alat_musik';      // di kostum.html ganti menjadi 'kostum'
+
+        (async function () {
+            const wadah = document.getElementById('daftarAlat');
+            wadah.textContent = 'Memuat katalog...';
+            try {
+                const items = await api('/inventory?category=' + KATEGORI);
+
+                // Di database 1 baris = 1 unit fisik. Kelompokkan per nama untuk menghitung stok.
+                const grup = {};
+                items.forEach(i => {
+                    if (!grup[i.name]) grup[i.name] = { contoh: i, total: 0, tersedia: 0 };
+                    grup[i.name].total++;
+                    if (i.status === 'tersedia') grup[i.name].tersedia++;
+                });
+
+                wadah.innerHTML = Object.values(grup).map(g => {
+                    const satuan = g.contoh.name.startsWith('Talempong') ? 'Set' : 'Unit';
+                    const ada = g.tersedia > 0;
+                    const label = !ada ? 'Sedang tidak tersedia'
+                                : g.tersedia < g.total ? `Tersedia: ${g.tersedia} dari ${g.total} ${satuan}`
+                                : `Tersedia: ${g.total} ${satuan}`;
+                    return `
+                        <div class="instrument-card">
+                            <div class="instrument-img-box">
+                                <img src="${esc(g.contoh.image_url)}" alt="${esc(g.contoh.name)}">
+                            </div>
+                            <div class="instrument-info">
+                                <h3>${esc(g.contoh.name)}</h3>
+                                <p>${esc(g.contoh.description)}</p>
+                                <span class="instrument-badge" style="${ada ? '' : 'background: rgba(192, 57, 43, .12); color: #c0392b;'}">${label}</span>
+                            </div>
+                        </div>`;
+                }).join('') || 'Belum ada data.';
+            } catch (e) {
+                wadah.textContent = 'Katalog gagal dimuat: ' + e.message;
+            }
+        })();
+    </script>
+</body>
+</html>

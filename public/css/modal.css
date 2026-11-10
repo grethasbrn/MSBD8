@@ -1,0 +1,17 @@
+/* SEMENTARA: kelas modal baru dari index.html teman (.modal-actions-custom, .btn-modal-nav).
+   Dibuat meniru gaya tombol modal lama. Jika style.css baru dari temanmu sudah dipakai
+   (file itu sudah memuat kelas ini), file ini boleh dihapus beserta tautannya di beranda.blade.php. */
+.modal-actions-custom { display: flex; gap: 12px; margin-bottom: 15px; }
+.btn-modal-nav {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    background: var(--maroon);
+    color: white;
+    border: 1px solid var(--gold);
+    transition: 0.2s;
+}
+.btn-modal-nav:hover { background: var(--maroon-dark); }

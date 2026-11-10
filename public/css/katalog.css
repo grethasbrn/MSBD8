@@ -1,0 +1,135 @@
+.catalog-section {
+    min-height: 100vh;
+    padding: 120px 20px 60px 20px;
+    background: #f4ebd0;
+}
+.catalog-container {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+.catalog-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.catalog-header p {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+.catalog-header h1 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 38px;
+    color: var(--maroon);
+    margin-top: 5px;
+}
+.catalog-header p.desc {
+    color: var(--muted);
+    font-size: 15px;
+    margin-top: 10px;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.category-title {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    color: var(--maroon);
+    margin: 40px 0 20px 0;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 8px;
+}
+
+/* Grid Katalog dengan Card Vertikal */
+.instrument-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+}
+.instrument-card {
+    background: #fdfbf7;
+    border-radius: 14px;
+    padding: 20px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.instrument-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(74, 18, 21, 0.12);
+}
+
+/* Kotak Gambar */
+.instrument-img-box {
+    width: 100%;
+    height: 140px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e6dcc6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.instrument-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.instrument-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.instrument-info h3 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    color: var(--maroon);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.instrument-info p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.instrument-badge {
+    background: rgba(13, 22, 38, 0.08);
+    color: var(--navy);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: auto;
+}
+
+.back-nav {
+    margin-top: 50px;
+    text-align: center;
+}
+.btn-back {
+    display: inline-block;
+    background: var(--maroon);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid var(--gold);
+    text-decoration: none;
+    transition: 0.2s;
+}
+.btn-back:hover {
+    background: var(--maroon-dark);
+}

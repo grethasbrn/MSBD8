@@ -1,0 +1,253 @@
+.form-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px 50px 20px;
+    background: #f4ebd0;
+}
+.form-container {
+    width: min(780px, 100%);
+    background: #fdfbf7;
+    padding: 40px;
+    border-radius: 16px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+.form-container h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 32px;
+    color: var(--maroon);
+    margin-bottom: 8px;
+}
+.form-container p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+.input-group {
+    margin-bottom: 22px;
+}
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: 6px;
+}
+.input-group input[type="text"],
+.input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #d4c5a9;
+    background: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--navy);
+    cursor: pointer;
+}
+
+/* Styling Grid Tanggal, Bulan, Tahun Kustom */
+.date-picker-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 12px;
+}
+
+.checkbox-box, .radio-box {
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid #d4c5a9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 6px;
+}
+.option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--navy);
+    cursor: pointer;
+}
+.option-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.option-item input[type="checkbox"],
+.option-item input[type="radio"] {
+    accent-color: var(--maroon);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Sub-pilihan kondisional (Alat Musik, Kostum, Add-on) */
+.sub-conditional-box {
+    margin-left: 26px;
+    margin-top: 10px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    display: none; /* Tersembunyi default */
+}
+.sub-conditional-box h4 {
+    font-size: 13px;
+    color: var(--maroon);
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px dashed var(--gold);
+    padding-bottom: 4px;
+}
+.instrument-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--navy);
+}
+.instrument-row select {
+    width: 75px;
+    padding: 6px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: 1px solid #d4c5a9;
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--maroon);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--gold);
+    transition: 0.2s;
+    margin-top: 10px;
+}
+.btn-submit:hover {
+    background: var(--maroon-dark);
+}
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--gold);
+}
+
+@media (max-width: 600px) {
+    .date-picker-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Tambahan untuk halaman pemesanan versi Blade ===== */
+.input-group input[type="number"],
+.input-group input[type="time"],
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #d4c5a9;
+    background: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--navy);
+}
+.input-group textarea { resize: vertical; }
+.input-group input[readonly] { background: #f4ebd0; font-weight: bold; }
+.input-group input[type="file"] { font-size: 13px; margin-top: 4px; max-width: 100%; }
+.input-group small { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+.option-item small { display: block; font-weight: normal; color: var(--muted); font-size: 12px; }
+
+.pesan-alert {
+    background: rgba(192, 57, 43, .08);
+    border: 1px solid rgba(192, 57, 43, .30);
+    color: #c0392b;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+.pesan-alert ul { margin: 6px 0 0 18px; }
+.pesan-alert.sukses {
+    background: rgba(46, 125, 50, .08);
+    border-color: rgba(46, 125, 50, .30);
+    color: #2e7d32;
+}
+
+.ringkasan-box {
+    background: #fff;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+.ringkasan-box h4 {
+    font-size: 13px;
+    color: var(--maroon);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+.biaya-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+.biaya-row span:last-child { text-align: right; }
+.biaya-row.total { font-weight: 700; border-top: 1px dashed var(--gold); padding-top: 10px; margin-top: 10px; }
+.pay-info { font-size: 14px; color: var(--navy); line-height: 1.7; margin-bottom: 14px; }
+
+.badge-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(13, 22, 38, .08);
+    color: var(--navy);
+}
+.badge-status.status-pending_verification, .badge-status.pay-pending { background: rgba(230, 126, 34, .15); color: #b9620f; }
+.badge-status.status-approved, .badge-status.pay-verified { background: rgba(46, 125, 50, .12); color: #2e7d32; }
+.badge-status.status-cancelled, .badge-status.pay-rejected { background: rgba(192, 57, 43, .12); color: #c0392b; }
+.badge-status.status-completed { background: rgba(13, 22, 38, .12); color: var(--navy); }
+
+.tabel-pesanan { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+.tabel-pesanan th { text-align: left; color: var(--maroon); padding: 8px 10px; border-bottom: 2px solid var(--gold); }
+.tabel-pesanan td { padding: 10px; border-bottom: 1px solid #e6dcc6; color: var(--navy); vertical-align: top; }
+.tabel-pesanan a { color: var(--maroon); font-weight: 700; }
+.scroll-x { overflow-x: auto; }
+
+.btn-wa, .btn-lanjut {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    background: var(--maroon);
+    color: #fff;
+    padding: 14px;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.btn-wa { background: #1f8f4e; }
+.btn-wa:hover { background: #17713d; }
+.btn-lanjut:hover { background: var(--maroon-dark); }
+.judul-kecil { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--gold); margin-bottom: 4px; }

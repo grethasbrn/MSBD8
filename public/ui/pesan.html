@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pemesanan - Sanggar Tri Arga</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .form-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 50px 20px;
+            background: #f4ebd0;
+        }
+        .form-container {
+            width: min(780px, 100%);
+            background: #fdfbf7;
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .form-container h2 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 32px;
+            color: var(--maroon);
+            margin-bottom: 8px;
+        }
+        .form-container p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 22px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 6px;
+        }
+        .input-group input[type="text"],
+        .input-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #d4c5a9;
+            background: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--navy);
+        }
+
+        /* Styling Grid Tanggal, Bulan, Tahun Kustom */
+        .date-picker-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 12px;
+        }
+        
+        .checkbox-box, .radio-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid #d4c5a9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 6px;
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--navy);
+            cursor: pointer;
+        }
+        .option-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .option-item input[type="checkbox"],
+        .option-item input[type="radio"] {
+            accent-color: var(--maroon);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        /* Sub-pilihan kondisional (Alat Musik, Kostum, Add-on) */
+        .sub-conditional-box {
+            margin-left: 26px;
+            margin-top: 10px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            display: none; /* Tersembunyi default */
+        }
+        .sub-conditional-box h4 {
+            font-size: 13px;
+            color: var(--maroon);
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px dashed var(--gold);
+            padding-bottom: 4px;
+        }
+        .instrument-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--navy);
+        }
+        .instrument-row select {
+            width: 75px;
+            padding: 6px;
+            font-size: 12px;
+            border-radius: 6px;
+            border: 1px solid #d4c5a9;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--maroon);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--gold);
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: var(--maroon-dark);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        @media (max-width: 600px) {
+            .date-picker-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+            /* ===== Tambahan untuk kolom baru (lokasi, catatan, jam, nominal, unggah bukti) ===== */
+        .input-group input[type="number"],
+        .input-group input[type="time"],
+        .input-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #d4c5a9;
+            background: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--navy);
+        }
+        .input-group textarea { resize: vertical; }
+        .input-group input[readonly] { background: #f4ebd0; font-weight: bold; }
+        .input-group input[type="file"] { font-size: 13px; margin-top: 4px; }
+        .input-group small { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+        .biaya-box {
+            display: none;
+            background: #fff;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 22px;
+        }
+        .biaya-box h4 { font-size: 13px; color: var(--maroon); margin-bottom: 10px; text-transform: uppercase; }
+        .biaya-row { display: flex; justify-content: space-between; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+        .biaya-row.total { font-weight: 700; border-top: 1px dashed var(--gold); padding-top: 8px; margin-top: 8px; }
+        .pesan-error { display: none; color: #c0392b; font-size: 13px; font-weight: 700; margin-bottom: 12px !important; white-space: pre-line; }
+        .pay-info { font-size: 14px; color: var(--navy); margin-bottom: 14px; line-height: 1.6; }
+        .sukses-box { text-align: center; }
+        .sukses-box .btn-submit { display: block; text-decoration: none; margin-top: 18px; }
+    </style>
+</head>
+<body>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Formulir Pemesanan Acara</h2>
+            <p>Lengkapi detail acara Anda. Rincian biaya dan DP akan dihitung otomatis.</p>
+
+            <form id="orderForm">
+                <!-- Nama Pemesan (otomatis dari akun yang sedang login) -->
+                <div class="input-group">
+                    <label for="namaPemesan">Nama Lengkap Pemesan</label>
+                    <input type="text" id="namaPemesan" readonly>
+                </div>
+
+                <!-- Paket Pertunjukan (pilih satu, diambil dari database) -->
+                <div class="input-group">
+                    <label>Pilih Paket Pertunjukan</label>
+                    <div class="radio-box" id="daftarPaket">Memuat paket...</div>
+                </div>
+
+                <!-- Tanggal, Bulan, Tahun (Tahun Dikunci 2026) -->
+                <div class="input-group">
+                    <label>Tanggal Pelaksanaan Acara</label>
+                    <div class="date-picker-grid">
+                        <select id="pilihTanggal" required>
+                            <option value="">Tanggal</option>
+                        </select>
+                        <select id="pilihBulan" required>
+                            <option value="">Bulan</option>
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                        <select id="pilihTahun" required disabled style="background: #f4ebd0; cursor: not-allowed; font-weight: bold;">
+                            <option value="2026" selected>2026</option>
+                        </select>
+                    </div>
+                    <small id="infoKuota"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="jamAcara">Jam Acara (boleh dikosongkan)</label>
+                    <input type="time" id="jamAcara">
+                </div>
+
+                <div class="input-group">
+                    <label for="lokasiAcara">Lokasi Acara (alamat lengkap)</label>
+                    <textarea id="lokasiAcara" rows="3" required placeholder="Contoh: Gedung Serbaguna, Jl. Sudirman No. 10, Pekanbaru"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="catatan">Catatan Tambahan (boleh dikosongkan)</label>
+                    <textarea id="catatan" rows="3" placeholder="Contoh: tema acara, permintaan khusus"></textarea>
+                </div>
+
+                <!-- Opsi Tambahan / Add-ons (Eksklusif: Normal atau Pilih Add-on) -->
+                <div class="input-group">
+                    <label>Opsi Tambahan (Pilih Salah Satu)</label>
+                    <div class="radio-box">
+                        <label class="option-item">
+                            <div class="option-left">
+                                <input type="radio" name="opsiAddon" value="Normal" checked onclick="toggleAddons(false)">
+                                <span><strong>Normal</strong> (Tidak ada tambahan add-on)</span>
+                            </div>
+                        </label>
+
+                        <label class="option-item" style="margin-top: 12px;">
+                            <div class="option-left">
+                                <input type="radio" name="opsiAddon" value="Addon" onclick="toggleAddons(true)">
+                                <span><strong>Pilih Add-on Acara</strong> (Bebas pilih rincian add-on)</span>
+                            </div>
+                        </label>
+
+                        <div class="sub-conditional-box" id="subAddonsContainer" style="display: none;">
+                            <h4>Pilih Rincian Add-on:</h4>
+                            <div id="daftarAddon">Memuat add-on...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rincian biaya (dihitung oleh database) -->
+                <div class="biaya-box" id="boxBiaya">
+                    <h4>Rincian Biaya</h4>
+                    <div class="biaya-row"><span>Harga paket</span><span id="biayaPaket">-</span></div>
+                    <div class="biaya-row"><span>Add-on</span><span id="biayaAddon">-</span></div>
+                    <div class="biaya-row total"><span>Total biaya</span><span id="biayaTotal">-</span></div>
+                    <div class="biaya-row"><span>DP minimal</span><span id="biayaDp">-</span></div>
+                    <div class="biaya-row"><span>Sisa dibayar setelah DP</span><span id="biayaSisa">-</span></div>
+                </div>
+
+                <!-- Pembayaran DP -->
+                <div class="input-group">
+                    <label>Pembayaran DP</label>
+                    <div class="radio-box">
+                        <div class="pay-info" id="infoRekening">Memuat info pembayaran...</div>
+
+                        <label for="metodeBayar">Metode Pembayaran</label>
+                        <select id="metodeBayar" style="margin-bottom: 14px;">
+                            <option value="transfer">Transfer Bank</option>
+                            <option value="qris">QRIS</option>
+                            <option value="ewallet">E-Wallet</option>
+                        </select>
+
+                        <label for="nominalDp">Nominal DP yang dibayarkan (Rp)</label>
+                        <input type="number" id="nominalDp" min="0" step="1000" style="margin-bottom: 14px;">
+
+                        <label for="buktiBayar">Unggah Bukti Pembayaran (JPG, PNG, WEBP, atau PDF, maks. 5 MB)</label>
+                        <input type="file" id="buktiBayar" accept="image/jpeg,image/png,image/webp,application/pdf">
+                    </div>
+                </div>
+
+                <p class="pesan-error" id="pesanError"></p>
+                <button type="submit" class="btn-submit">Kirim Pesanan Sekarang</button>
+            </form>
+
+            <!-- Tampil setelah pesanan berhasil -->
+            <div class="sukses-box" id="suksesBox" style="display: none;">
+                <h2>Pesanan Terkirim ✓</h2>
+                <p>ID Transaksi Anda: <strong id="idTransaksi"></strong></p>
+                <p>Status: <strong>Menunggu verifikasi DP</strong> oleh pihak sanggar. Simpan ID Transaksi ini, lalu kirim konfirmasi lewat WhatsApp agar pesanan segera diproses.</p>
+                <a id="btnWA" class="btn-submit" href="#" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+            </div>
+
+            <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+        </div>
+    </section>
+
+    <script src="js/api.js"></script>
+    <script>
+        const $ = id => document.getElementById(id);
+
+        // --- 0. HANYA PELANGGAN YANG LOGIN BOLEH MEMBUKA HALAMAN INI ---
+        const user = JSON.parse(localStorage.getItem('user') || 'null');
+        if (!localStorage.getItem('token') || !user || user.role !== 'customer') {
+            location.href = 'login.html';
+        } else {
+            $('namaPemesan').value = user.name;
+        }
+
+        // --- 1. FUNGSI TOGGLE ADD-ON ---
+        function toggleAddons(show) {
+            $('subAddonsContainer').style.display = show ? 'block' : 'none';
+            if (!show) {
+                document.querySelectorAll('input[name="addon"]').forEach(el => el.checked = false);
+            }
+        }
+
+        // --- 2. SKRIP TANGGAL & BULAN (DIKUNCI TAHUN 2026) ---
+        const today = new Date();
+        const currentYear = 2026;
+        const currentMonth = today.getMonth() + 1; // 1-12
+        const currentDate = today.getDate();
+
+        const selectBulan = $('pilihBulan');
+        const selectTanggal = $('pilihTanggal');
+
+        function updateBulanOptions() {
+            selectBulan.querySelectorAll('option').forEach(opt => {
+                if (opt.value === "") return;
+                const lewat = parseInt(opt.value) < currentMonth;
+                opt.disabled = lewat;
+                opt.style.display = lewat ? 'none' : 'block';
+            });
+            if (parseInt(selectBulan.value) < currentMonth) selectBulan.value = "";
+            updateTanggalOptions();
+        }
+
+        function updateTanggalOptions() {
+            const selectedM = parseInt(selectBulan.value);
+            const prevTanggal = selectTanggal.value;
+            selectTanggal.innerHTML = '<option value="">Tanggal</option>';
+            if (!selectedM) return;
+
+            const daysInMonth = new Date(currentYear, selectedM, 0).getDate();
+            for (let d = 1; d <= daysInMonth; d++) {
+                // Pesanan harus untuk hari setelah hari ini (aturan backend)
+                if (selectedM === currentMonth && d <= currentDate) continue;
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = d;
+                selectTanggal.appendChild(opt);
+            }
+            selectTanggal.value = prevTanggal;
+        }
+
+        selectBulan.addEventListener('change', updateTanggalOptions);
+        updateBulanOptions();
+
+        const pad = n => String(n).padStart(2, '0');
+        function ambilTanggal() {            // hasil: "2026-12-15" atau null kalau belum lengkap
+            if (!selectBulan.value || !selectTanggal.value) return null;
+            return `${currentYear}-${pad(selectBulan.value)}-${pad(selectTanggal.value)}`;
+        }
+
+        // --- 3. MUAT DATA DARI DATABASE ---
+        async function muatPaket() {
+            try {
+                const paket = await api('/packages');
+                $('daftarPaket').innerHTML = paket.map(p => `
+                    <label class="option-item">
+                        <div class="option-left">
+                            <input type="radio" name="paket" value="${p.id}">
+                            <span>${esc(p.name)} — ${rupiah(p.price)}</span>
+                        </div>
+                    </label>`).join('') || 'Belum ada paket.';
+            } catch (e) { $('daftarPaket').textContent = 'Paket gagal dimuat: ' + e.message; }
+        }
+
+        async function muatAddon() {
+            try {
+                const addons = await api('/addons');
+                $('daftarAddon').innerHTML = addons.map(a => `
+                    <label class="option-item">
+                        <div class="option-left">
+                            <input type="checkbox" name="addon" value="${a.id}">
+                            <span>${esc(a.name)} (+${rupiah(a.price)})</span>
+                        </div>
+                    </label>`).join('') || 'Belum ada add-on.';
+            } catch (e) { $('daftarAddon').textContent = 'Add-on gagal dimuat: ' + e.message; }
+        }
+
+        async function muatRekening() {
+            try {
+                const i = await api('/payment-info');
+                let html = `DP minimal <strong>${i.dp_percent}%</strong> dari total biaya.<br>
+                            Transfer ke <strong>${esc(i.bank_name)} ${esc(i.bank_account_number)}</strong>
+                            a.n. ${esc(i.bank_account_name)}`;
+                if (i.qris_url) html += `<br><img src="${esc(i.qris_url)}" alt="QRIS" style="max-width: 200px; margin-top: 8px;">`;
+                $('infoRekening').innerHTML = html;
+            } catch (e) { $('infoRekening').textContent = 'Info pembayaran gagal dimuat.'; }
+        }
+
+        // --- 4. HITUNG BIAYA OTOMATIS (dipanggil tiap pilihan berubah) ---
+        let biaya = null;
+        const addonTerpilih = () => [...document.querySelectorAll('input[name="addon"]:checked')].map(i => Number(i.value));
+
+        async function hitungBiaya() {
+            const paketEl = document.querySelector('input[name="paket"]:checked');
+            if (!paketEl) { $('boxBiaya').style.display = 'none'; return; }
+            try {
+                biaya = await api('/orders/quote', {
+                    method: 'POST',
+                    body: { package_id: Number(paketEl.value), addon_ids: addonTerpilih(), event_date: ambilTanggal() },
+                });
+            } catch (e) { tampilError(e.message); return; }
+
+            $('biayaPaket').textContent = rupiah(biaya.package_price);
+            $('biayaAddon').textContent = rupiah(biaya.addons_total);
+            $('biayaTotal').textContent = rupiah(biaya.total_amount);
+            $('biayaDp').textContent    = rupiah(biaya.min_dp_amount);
+            $('biayaSisa').textContent  = rupiah(biaya.remaining_after_min_dp);
+            $('boxBiaya').style.display = 'block';
+
+            $('nominalDp').min = biaya.min_dp_amount;
+            if (!$('nominalDp').dataset.manual) $('nominalDp').value = biaya.min_dp_amount;
+
+            const q = biaya.quota;
+            $('infoKuota').textContent = !q ? '' : q.is_full
+                ? 'Tanggal ini sudah penuh. Silakan pilih tanggal lain.'
+                : `Tanggal tersedia (sisa ${q.available_slots} dari ${q.max_slots} slot).`;
+            $('infoKuota').style.color = q && q.is_full ? '#c0392b' : '';
+        }
+
+        $('nominalDp').addEventListener('input', () => { $('nominalDp').dataset.manual = '1'; });
+        $('orderForm').addEventListener('change', e => {
+            if (e.target.matches('input[name="paket"], input[name="addon"], input[name="opsiAddon"], #pilihBulan, #pilihTanggal')) {
+                hitungBiaya();
+            }
+        });
+
+        function tampilError(teks) {
+            $('pesanError').textContent = teks;
+            $('pesanError').style.display = teks ? 'block' : 'none';
+        }
+
+        // --- 5. KIRIM PESANAN KE BACKEND ---
+        $('orderForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            tampilError('');
+
+            const paketEl = document.querySelector('input[name="paket"]:checked');
+            if (!paketEl) return tampilError('Silakan pilih paket pertunjukan.');
+
+            const tanggal = ambilTanggal();
+            if (!tanggal) return tampilError('Silakan lengkapi tanggal pelaksanaan acara.');
+
+            const lokasi = $('lokasiAcara').value.trim();
+            if (lokasi.length < 10) return tampilError('Lokasi acara minimal 10 karakter (tulis alamat selengkapnya).');
+
+            if (!biaya) await hitungBiaya();
+            if (biaya && biaya.quota && biaya.quota.is_full) return tampilError('Tanggal ini sudah penuh. Silakan pilih tanggal lain.');
+
+            const dp = Number($('nominalDp').value);
+            if (biaya && dp < biaya.min_dp_amount) return tampilError('Nominal DP minimal ' + rupiah(biaya.min_dp_amount) + '.');
+
+            const file = $('buktiBayar').files[0];
+            if (!file) return tampilError('Silakan unggah bukti pembayaran DP.');
+            if (file.size > 5 * 1024 * 1024) return tampilError('Ukuran bukti pembayaran maksimal 5 MB.');
+
+            const form = new FormData();
+            form.append('package_id', paketEl.value);
+            addonTerpilih().forEach(id => form.append('addon_ids[]', id));
+            form.append('event_date', tanggal);
+            if ($('jamAcara').value) form.append('event_time', $('jamAcara').value);
+            form.append('event_location', lokasi);
+            if ($('catatan').value.trim()) form.append('notes', $('catatan').value.trim());
+            form.append('payment_method', $('metodeBayar').value);
+            form.append('dp_amount', dp);
+            form.append('proof', file);
+
+            const tombol = this.querySelector('.btn-submit');
+            tombol.disabled = true;
+            tombol.textContent = 'Mengirim...';
+
+            try {
+                const res = await api('/orders', { method: 'POST', form: form });
+
+                // Tampilkan hasil. Tombol WhatsApp berupa link biasa agar tidak diblokir popup-blocker.
+                $('idTransaksi').textContent = res.order.code;
+                $('btnWA').href = res.whatsapp_url;
+                this.style.display = 'none';
+                $('suksesBox').style.display = 'block';
+                window.scrollTo(0, 0);
+            } catch (err) {
+                // Pesan validasi Laravel berbahasa Inggris, jadi kita pakai teks sendiri per kolom
+                const peta = {
+                    package_id: 'Pilih paket terlebih dahulu.',
+                    event_date: 'Tanggal acara tidak valid (harus setelah hari ini).',
+                    event_time: 'Jam acara tidak valid.',
+                    event_location: 'Lokasi acara minimal 10 karakter.',
+                    payment_method: 'Pilih metode pembayaran.',
+                    dp_amount: 'Nominal DP tidak valid.',
+                    proof: 'Bukti pembayaran harus berupa JPG, PNG, WEBP, atau PDF maksimal 5 MB.',
+                };
+                if (err.errors) {
+                    tampilError(Object.keys(err.errors).map(k => peta[k] || err.errors[k][0]).join('\n'));
+                } else {
+                    tampilError(err.message);   // contoh: "Kuota tanggal 01-12-2026 sudah penuh"
+                }
+            } finally {
+                tombol.disabled = false;
+                tombol.textContent = 'Kirim Pesanan Sekarang';
+            }
+        });
+
+        muatPaket();
+        muatAddon();
+        muatRekening();
+    </script>
+</body>
+</html>
