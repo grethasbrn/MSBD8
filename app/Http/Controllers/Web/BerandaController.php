@@ -19,7 +19,7 @@ class BerandaController extends Controller
     public function index(Request $request)
     {
         return view('beranda', [
-            'paket'    => Package::where('is_active', true)->orderBy('id')->get(),
+            'paket tersedia'    => Package::where('is_active', true)->orderBy('id')->get(),
             'addons'   => Addon::where('is_active', true)->orderBy('id')->get(),
             'kalender' => $this->kalender($request->query('bulan')),
         ]);
