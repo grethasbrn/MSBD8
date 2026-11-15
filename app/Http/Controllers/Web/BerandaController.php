@@ -19,51 +19,63 @@ class BerandaController extends Controller
     public function index(Request $request)
     {
         return view('beranda', [
-            'paket tersedia'    => Package::where('is_active', true)->orderBy('id')->get(),
+            'paket'    => Package::where('is_active', true)->orderBy('id')->get(),
             'addons'   => Addon::where('is_active', true)->orderBy('id')->get(),
             'kalender' => $this->kalender($request->query('bulan')),
         ]);
     }
 
-    /** Menyusun kalender satu bulan dari fungsi database fn_kalender (kuota per tanggal). */
     private function kalender(?string $param): array
     {
         $tz = 'Asia/Jakarta';
         $bulanIni = Carbon::now($tz)->startOfMonth();
-        $batas    = $bulanIni->copy()->addMonths(12);
+        $batas = $bulanIni->copy()->addMonths(12);
 
         $bulan = $bulanIni->copy();
+
         if ($param && preg_match('/^\d{4}-(0[1-9]|1[0-2])$/', $param)) {
             $bulan = Carbon::createFromFormat('!Y-m', $param, $tz);
         }
-        if ($bulan->lt($bulanIni)) $bulan = $bulanIni->copy();   // tidak mundur ke bulan yang sudah lewat
-        if ($bulan->gt($batas))    $bulan = $batas->copy();      // maksimal 12 bulan ke depan
+
+        if ($bulan->lt($bulanIni)) $bulan = $bulanIni->copy();
+        if ($bulan->gt($batas)) $bulan = $batas->copy();
 
         $jumlahHari = $bulan->daysInMonth;
+
         $data = collect(DB::select('select * from fn_kalender(?, ?)', [
-            $bulan->toDateString(), $bulan->copy()->endOfMonth()->toDateString(),
+            $bulan->toDateString(),
+            $bulan->copy()->endOfMonth()->toDateString(),
         ]))->keyBy('event_date');
 
         $hariIni = Carbon::now($tz)->toDateString();
         $sel = [];
+
         for ($d = 1; $d <= $jumlahHari; $d++) {
             $tgl = $bulan->copy()->day($d)->toDateString();
             $row = $data[$tgl] ?? null;
 
-            if ($tgl <= $hariIni)                              { $status = 'lewat'; }      // pesanan baru hanya untuk besok dan seterusnya
-            elseif ($row && $row->is_full)                     { $status = 'penuh'; }
-            elseif ($row && (int) $row->available_slots === 1) { $status = 'terbatas'; }
-            else                                               { $status = 'tersedia'; }
+            if ($tgl <= $hariIni) {
+                $status = 'lewat';
+            } elseif ($row && $row->is_full) {
+                $status = 'penuh';
+            } elseif ($row && (int) $row->available_slots === 1) {
+                $status = 'terbatas';
+            } else {
+                $status = 'tersedia';
+            }
 
-            $sel[] = ['hari' => $d, 'status' => $status];
+            $sel[] = [
+                'hari' => $d,
+                'status' => $status,
+            ];
         }
 
         return [
             'judul' => self::NAMA_BULAN[(int) $bulan->format('n')] . ' ' . $bulan->format('Y'),
-            'kosong_awal' => $bulan->dayOfWeek,            // 0 = Minggu
+            'kosong_awal' => $bulan->dayOfWeek,
             'sel' => $sel,
             'prev' => $bulan->gt($bulanIni) ? $bulan->copy()->subMonth()->format('Y-m') : null,
-            'next' => $bulan->lt($batas)    ? $bulan->copy()->addMonth()->format('Y-m')  : null,
+            'next' => $bulan->lt($batas) ? $bulan->copy()->addMonth()->format('Y-m') : null,
         ];
     }
 }
