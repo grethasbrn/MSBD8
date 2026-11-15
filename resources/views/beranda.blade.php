@@ -68,7 +68,7 @@
             <div class="inner-content">
                 <div class="section-heading">
                     <div>
-                        <p class="section-label">01 — PERTUNJUKAN</p>
+                        <p class="section-label">PERTUNJUKAN</p>
                         <h2>Pilih Pertunjukan untuk Acara Anda</h2>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
 
                 <div class="addons-navy-banner">
                     <div class="addons-text">
-                        <p class="section-label-gold">02 — OPSI TAMBAHAN</p>
+                        <p class="section-label-gold">OPSI TAMBAHAN</p>
                         <h2>Sesuaikan kebutuhan acara Anda</h2>
                         <p>Tambahkan kebutuhan ekstra pada pesanan Anda sesuai dengan konsep acara.</p>
                     </div>
@@ -121,12 +121,12 @@
         </section>
 
 
-        <!-- ================= 03. KATALOG BARANG ================= -->
+        <!-- ================= KATALOG BARANG ================= -->
         <section class="page-section section" id="barang">
             <div class="inner-content">
                 <div class="section-heading">
                     <div>
-                        <p class="section-label">03 — KATALOG BARANG</p>
+                        <p class="section-label">KATALOG BARANG</p>
                         <h2>Kostum dan Alat Musik</h2>
                     </div>
                 </div>
@@ -166,12 +166,12 @@
         </section>
 
 
-        <!-- ================= 04. KETERSEDIAAN ================= -->
+        <!-- ================= KETERSEDIAAN ================= -->
         <section class="page-section calendar-preview section" id="kalender">
             <div class="inner-content">
                 <div class="calendar-box">
                     <div class="calendar-text">
-                        <p class="section-label">04 — KETERSEDIAAN</p>
+                        <p class="section-label">KETERSEDIAAN</p>
                         <h2>Cek Tanggal Acara Anda</h2>
                         <p>
                             Maksimal 3 acara dapat diterima dalam satu hari. Status tanggal akan diperbarui secara realtime oleh owner berdasarkan pesanan masuk.
@@ -228,7 +228,7 @@
             <div class="inner-content">
                 <div class="section-heading">
                     <div>
-                        <p class="section-label">05 — GALERI</p>
+                        <p class="section-label">GALERI</p>
                         <h2>Momen Pertunjukan Kami</h2>
                     </div>
                     <a href="https://instagram.com/triarga_dc" target="_blank" class="instagram-link">
