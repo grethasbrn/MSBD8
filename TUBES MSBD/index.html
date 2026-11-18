@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanggar Tri Arga - Seni dan Pertunjukan</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#beranda" class="logo">
+                <img src="images/logo.png" alt="Logo Sanggar Tri Arga" class="logo-img">
+                <span>SANGGAR <strong>TRIARGA</strong></span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#beranda" class="nav-link active">Beranda</a>
+                <a href="#paket" class="nav-link">Paket</a>
+                <a href="#barang" class="nav-link">Kostum dan Alat</a>
+                <a href="#kalender" class="nav-link">Kalender</a>
+                <a href="#galeri" class="nav-link">Galeri</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-small btn-yellow">Masuk</a>
+                <a href="register.html" class="btn-small btn-yellow">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- ================= BERANDA / HERO ================= -->
+        <section class="page-section hero" id="beranda">
+            <div class="hero-content">
+                <p class="eyebrow">✦ SENI • BUDAYA • PERTUNJUKAN ✦</p>
+                <h1>Hadirkan Seni di Setiap Momen</h1>
+                <p class="hero-description">
+                    Temukan paket pertunjukan tari dan musik, kostum, serta perlengkapan untuk melengkapi acara spesial Anda dengan nuansa budaya nusantara.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#paket" class="btn-primary">Lihat Paket</a>
+                    <!-- Tombol Buat Pesanan yang memunculkan Pop-up Modal -->
+                    <button type="button" class="btn-primary" id="btnBuatPesanan">Buat Pesanan</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= 01 & 02. PAKET & OPSI TAMBAHAN ================= -->
+        <section class="page-section packages section" id="paket">
+            <div class="inner-content">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">01 — PERTUNJUKAN</p>
+                        <h2>Pilih Pertunjukan untuk Acara Anda</h2>
+                    </div>
+                </div>
+
+                <div class="package-grid">
+                    <article class="package-card card-navy">
+                        <div class="package-top">
+                            <span class="package-number">01</span>
+                            <span class="status available">Tersedia</span>
+                        </div>
+                        <div class="package-icon">✦</div>
+                        <h3>Tari Sambut</h3>
+                        <p>Pertunjukan tari untuk menyambut tamu dan memeriahkan acara.</p>
+                        <div class="package-bottom">
+                            <small>Mulai dari</small>
+                            <strong>Rp1.500.000</strong>
+                        </div>
+                    </article>
+
+                    <article class="package-card card-red">
+                        <div class="package-top">
+                            <span class="package-number">02</span>
+                            <span class="status available">Tersedia</span>
+                        </div>
+                        <div class="package-icon">◇</div>
+                        <h3>Tari Tradisional</h3>
+                        <p>Pertunjukan tari tradisional dengan nuansa budaya yang khas.</p>
+                        <div class="package-bottom">
+                            <small>Mulai dari</small>
+                            <strong>Rp2.000.000</strong>
+                        </div>
+                    </article>
+
+                    <article class="package-card card-yellow">
+                        <div class="package-top">
+                            <span class="package-number">03</span>
+                            <span class="status available">Tersedia</span>
+                        </div>
+                        <div class="package-icon">♫</div>
+                        <h3>Musik dan Karawitan</h3>
+                        <p>Pertunjukan musik dan karawitan untuk melengkapi acara Anda.</p>
+                        <div class="package-bottom">
+                            <small>Mulai dari</small>
+                            <strong>Rp1.800.000</strong>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="addons-navy-banner">
+                    <div class="addons-text">
+                        <p class="section-label-gold">02 — OPSI TAMBAHAN</p>
+                        <h2>Sesuaikan kebutuhan acara Anda</h2>
+                        <p>Tambahkan kebutuhan ekstra pada pesanan Anda sesuai dengan konsep acara.</p>
+                    </div>
+
+                    <div class="addons-list-box">
+                        <div class="addon-item">
+                            <div class="addon-item-info">
+                                <h4>+2 Penari</h4>
+                                <p>Tambahan penari pertunjukan</p>
+                            </div>
+                            <span class="addon-item-price">+Rp100.000</span>
+                        </div>
+
+                        <div class="addon-item">
+                            <div class="addon-item-info">
+                                <h4>+1 Tari Ekstra</h4>
+                                <p>Tambahan satu pertunjukan tari</p>
+                            </div>
+                            <span class="addon-item-price">+Rp200.000</span>
+                        </div>
+
+                        <div class="addon-item">
+                            <div class="addon-item-info">
+                                <h4>Live Music</h4>
+                                <p>Tambahan pemusik untuk acara</p>
+                            </div>
+                            <span class="addon-item-price">+Rp500.000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= 03. KATALOG BARANG ================= -->
+        <section class="page-section section" id="barang">
+            <div class="inner-content">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">03 — KATALOG BARANG</p>
+                        <h2>Kostum dan Alat Musik</h2>
+                    </div>
+                </div>
+
+                <div class="inventory-grid">
+                    <a href="kostum.html" class="inventory-card">
+                        <div class="inventory-image costume" style="background-image: url('images/coverbajuadat.png'); background-size: cover; background-position: center; position: relative;">
+                            <div style="position: absolute; inset: 0; background: rgba(74, 18, 21, 0.45); display: flex; align-items: center; justify-content: center;">
+                                <span style="font-family: 'Times New Roman', Times, serif; font-size: 26px; color: var(--gold); font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">KOSTUM</span>
+                            </div>
+                        </div>
+                        <div class="inventory-info">
+                            <div>
+                                <h3>Kostum Tari</h3>
+                                <p>Koleksi Kostum untuk Pertunjukan</p>
+                            </div>
+                            <span class="inventory-btn-link">LIHAT KATALOG</span>
+                        </div>
+                    </a>
+
+                    <a href="alat-musik.html" class="inventory-card">
+                        <div class="inventory-image instrument" style="background-image: url('images/coverkatalogalatmusik.png'); background-size: cover; background-position: center; position: relative;">
+                            <div style="position: absolute; inset: 0; background: rgba(13, 22, 38, 0.45); display: flex; align-items: center; justify-content: center;">
+                                <span style="font-family: 'Times New Roman', Times, serif; font-size: 26px; color: var(--gold); font-weight: bold; letter-spacing: 2px; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">ALAT MUSIK</span>
+                            </div>
+                        </div>
+                        <div class="inventory-info">
+                            <div>
+                                <h3>Alat Musik</h3>
+                                <p>Gamelan, Kendang, Flute, Keyboard</p>
+                            </div>
+                            <span class="inventory-btn-link">LIHAT KATALOG</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= 04. KETERSEDIAAN ================= -->
+        <section class="page-section calendar-preview section" id="kalender">
+            <div class="inner-content">
+                <div class="calendar-box">
+                    <div class="calendar-text">
+                        <p class="section-label">04 — KETERSEDIAAN</p>
+                        <h2>Cek Tanggal Acara Anda</h2>
+                        <p>
+                            Maksimal 3 acara dapat diterima dalam satu hari. Status tanggal akan diperbarui secara realtime oleh owner berdasarkan pesanan masuk.
+                        </p>
+                    </div>
+
+                    <div class="mini-calendar">
+                        <div class="calendar-header">
+                            <strong id="calendar-month-year">Oktober 2026</strong>
+                            <span>‹ &nbsp; ›</span>
+                        </div>
+                        <div class="calendar-days">
+                            <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+                        </div>
+                        <div class="calendar-dates" id="realtime-calendar-dates">
+                            <span></span><span></span><span></span>
+                            <span>1</span><span>2</span><span>3</span><span>4</span>
+                            <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
+                            <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+                            <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+                            <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+                        </div>
+                        <div class="calendar-legend">
+                            <span><i class="available-dot"></i> Tersedia</span>
+                            <span><i class="busy-dot"></i> Terbatas</span>
+                            <span><i class="full-dot"></i> Penuh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= 05. GALERI ================= -->
+        <section class="page-section section" id="galeri">
+            <div class="inner-content">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">05 — GALERI</p>
+                        <h2>Momen Pertunjukan Kami</h2>
+                    </div>
+                    <a href="https://instagram.com/triarga_dc" target="_blank" class="instagram-link">
+                        Lihat lebih lengkap di Instagram <strong>@triarga_dc</strong> 
+                    </a>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <img src="images/tari tradisisonal.png" alt="Tari Tradisional">
+                        <span>Tari Tradisional</span>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/pertunjukan tari.png" alt="Pertunjukan Tari">
+                        <span>Pertunjukan Tari</span>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="images/musik & karawitan.png" alt="Musik dan Karawitan">
+                        <span>Musik dan Karawitan</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= POPUP MODAL PERINGATAN (MASUK / DAFTAR) ================= -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">⚠️</div>
+            <h3>Akun Diperlukan</h3>
+            <p>Untuk membuat pesanan, silakan masuk jika Anda sudah memiliki akun, atau daftar terlebih dahulu jika belum memiliki akun.</p>
+            <div class="modal-actions-custom">
+                <a href="login.html" class="btn-modal-nav">Masuk</a>
+                <a href="register.html" class="btn-modal-nav">Daftar</a>
+            </div>
+            <button type="button" id="closeModal" class="modal-close-text">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Script Interaksi Tombol Buat Pesanan & Pop-up Modal -->
+    <script>
+        const btnBuatPesanan = document.getElementById('btnBuatPesanan');
+        const loginModal = document.getElementById('loginModal');
+        const closeModal = document.getElementById('closeModal');
+
+        btnBuatPesanan.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
