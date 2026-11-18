@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Kostum & Pakaian Adat - Sanggar Tri Arga</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .catalog-section {
+            min-height: 100vh;
+            padding: 120px 20px 60px 20px;
+            background: #f4ebd0;
+        }
+        .catalog-container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .catalog-header p {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+        .catalog-header h1 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 38px;
+            color: var(--maroon);
+            margin-top: 5px;
+        }
+        .catalog-header p.desc {
+            color: var(--muted);
+            font-size: 15px;
+            margin-top: 10px;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .category-title {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 24px;
+            color: var(--maroon);
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+        }
+
+        /* Grid Katalog dengan Card Vertikal */
+        .instrument-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        .instrument-card {
+            background: #fdfbf7;
+            border-radius: 14px;
+            padding: 20px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .instrument-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(74, 18, 21, 0.12);
+        }
+
+        /* Kotak Gambar */
+        .instrument-img-box {
+            width: 100%;
+            height: 140px;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e6dcc6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .instrument-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .instrument-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .instrument-info h3 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 18px;
+            color: var(--maroon);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .instrument-info p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .instrument-badge {
+            background: rgba(13, 22, 38, 0.08);
+            color: var(--navy);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: auto;
+        }
+
+        .back-nav {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .btn-back {
+            display: inline-block;
+            background: var(--maroon);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1px solid var(--gold);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-back:hover {
+            background: var(--maroon-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="catalog-section">
+        <div class="catalog-container">
+            <div class="catalog-header">
+                <p>KATALOG INVENTARIS</p>
+                <h1>Katalog Kostum & Pakaian Adat</h1>
+                <p class="desc">Koleksi lengkap pakaian tari dan aksesoris tradisional Minang, Mandailing, dan Aceh untuk pementasan.</p>
+            </div>
+
+            <!-- 1. Baju Tari Minang Laki-laki -->
+            <h2 class="category-title">Pakaian Tari Minang (Laki-laki)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Baldu Merah Strip Gold.png" alt="Baju Baldu Merah Strip Gold"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Baldu Merah Strip Gold</h3>
+                        <p>Pakaian penari laki-laki khas Minang</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Baldu Merah Strip Gold.png" alt="Celana Baldu Merah Strip Gold"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Baldu Merah Strip Gold</h3>
+                        <p>Celana pasangan baju baldu merah</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Baldu Marun.png" alt="Baju Baldu Marun"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Baldu Marun</h3>
+                        <p>Pakaian penari laki-laki warna marun</p>
+                        <span class="instrument-badge">Tersedia: 3 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Baldu Marun.png" alt="Celana Baldu Marun"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Baldu Marun</h3>
+                        <p>Celana pasangan baldu marun</p>
+                        <span class="instrument-badge">Tersedia: 3 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Satin Merah.png" alt="Baju Satin Merah"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Satin Merah</h3>
+                        <p>Pakaian bahan satin merah</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Satin Merah.png" alt="Celana Satin Merah"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Satin Merah</h3>
+                        <p>Celana satin merah</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Satin Biru.png" alt="Baju Satin Biru"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Satin Biru</h3>
+                        <p>Pakaian bahan satin biru</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Satin Biru.png" alt="Celana Satin Biru"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Satin Biru</h3>
+                        <p>Celana satin biru</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Baldu Oranye.png" alt="Baju Baldu Oranye"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Baldu Oranye</h3>
+                        <p>Pakaian baldu oranye</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Baldu Oranye.png" alt="Celana Baldu Oranye"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Baldu Oranye</h3>
+                        <p>Celana baldu oranye</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Destar (Topi Minang) -->
+            <h2 class="category-title">Destar (Topi Tari Minang)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Destar Merah.png" alt="Destar Merah"></div>
+                    <div class="instrument-info">
+                        <h3>Destar Merah</h3>
+                        <p>Topi penutup kepala khas Minang</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Destar Hitam.png" alt="Destar Hitam"></div>
+                    <div class="instrument-info">
+                        <h3>Destar Hitam</h3>
+                        <p>Topi penutup kepala warna hitam</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Destar Kuning.png" alt="Destar Kuning"></div>
+                    <div class="instrument-info">
+                        <h3>Destar Kuning</h3>
+                        <p>Topi penutup kepala warna kuning</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Pakaian Tari Minang Perempuan -->
+            <h2 class="category-title">Pakaian Tari Minang (Perempuan)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Baldu Merah Strip Gold copy Prp.png" alt="Baju Baldu Merah Strip Gold Perempuan"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Baldu Merah Strip Gold</h3>
+                        <p>Baju baldu perempuan khas Minang</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Rok Baldu Merah Strip Gold.png" alt="Rok Baldu Merah Strip Gold"></div>
+                    <div class="instrument-info">
+                        <h3>Rok Baldu Merah Strip Gold</h3>
+                        <p>Rok pasangan baldu merah</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Baldu Marun Prp.png" alt="Baju Baldu Marun Perempuan"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Baldu Marun</h3>
+                        <p>Baju baldu perempuan warna marun</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Satin Merah Prp.png" alt="Baju Satin Merah Perempuan"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Satin Merah</h3>
+                        <p>Baju satin merah perempuan</p>
+                        <span class="instrument-badge">Tersedia: 6 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Rok Satin Merah.png" alt="Rok Satin Merah"></div>
+                    <div class="instrument-info">
+                        <h3>Rok Satin Merah</h3>
+                        <p>Rok satin merah perempuan</p>
+                        <span class="instrument-badge">Tersedia: 6 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Songket Hitam Minang.png" alt="Songket Hitam Minang"></div>
+                    <div class="instrument-info">
+                        <h3>Songket Hitam</h3>
+                        <p>Kain songket hitam tradisional</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Tari Mandailing Perempuan -->
+            <h2 class="category-title">Pakaian & Aksesoris Tari Mandailing (Perempuan)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Satin Merah Gold Mandailing.png" alt="Baju Satin Merah Gold Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Satin Merah Strip Gold</h3>
+                        <p>Baju perempuan Mandailing</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Songket Hitam Mandailing.png" alt="Songket Hitam Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Songket Hitam Mandailing</h3>
+                        <p>Kain songket khas Mandailing</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Kain Slempang Mandailing.png" alt="Kain Slempang Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Kain Slempang Mandailing</h3>
+                        <p>Slempang khas tradisi Mandailing</p>
+                        <span class="instrument-badge">Tersedia: 6 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Keranjang Merah.png" alt="Keranjang Merah"></div>
+                    <div class="instrument-info">
+                        <h3>Keranjang Merah</h3>
+                        <p>Properti keranjang tradisional</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Kalung Mandailing.png" alt="Kalung Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Kalung</h3>
+                        <p>Aksesoris kalung tradisional</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Tokah Hitam.png" alt="Tokah Hitam"></div>
+                    <div class="instrument-info">
+                        <h3>Tokah Hitam</h3>
+                        <p>Aksesoris tokah hitam</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Bulang Mandailing.png" alt="Bulang Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Bulang Mandailing</h3>
+                        <p>Hiasan kepala adat Mandailing</p>
+                        <span class="instrument-badge">Set Lengkap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Tari Mandailing Laki-laki -->
+            <h2 class="category-title">Pakaian & Aksesoris Tari Mandailing (Laki-laki)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Blazer Hitam Mandailing.png" alt="Blazer Hitam Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Blazer Hitam</h3>
+                        <p>Blazer pakaian adat laki-laki</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Kain Songket Mandailing Lk.png" alt="Kain Songket Mandailing Lk"></div>
+                    <div class="instrument-info">
+                        <h3>Kain Songket Mandailing</h3>
+                        <p>Kain songket laki-laki</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Topi Mandailing.png" alt="Topi Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Topi Mandailing</h3>
+                        <p>Penutup kepala khas laki-laki</p>
+                        <span class="instrument-badge">Tersedia: 5 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Bros Mandailing.png" alt="Bros Mandailing"></div>
+                    <div class="instrument-info">
+                        <h3>Bros Mandailing</h3>
+                        <p>Aksesoris bros pelengkap</p>
+                        <span class="instrument-badge">Set Lengkap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Tari Aceh Perempuan -->
+            <h2 class="category-title">Pakaian Tari Aceh & Aksesoris (Perempuan)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Bordir Hijau Aceh.png" alt="Baju Bordir Hijau Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Bordir Hijau</h3>
+                        <p>Baju bordir tradisional Aceh</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Bordir Hijau Aceh.png" alt="Celana Bordir Hijau Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Bordir Hijau</h3>
+                        <p>Celana pasangan bordir hijau</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Topi Aceh.png" alt="Topi Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Topi Aceh</h3>
+                        <p>Hiasan kepala khas Aceh</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Slempang Aceh.png" alt="Slempang Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Slempang Aceh</h3>
+                        <p>Kain slempang dekoratif Aceh</p>
+                        <span class="instrument-badge">Tersedia: 4 Unit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Tari Aceh Laki-laki -->
+            <h2 class="category-title">Pakaian Tari Aceh (Laki-laki)</h2>
+            <div class="instrument-grid">
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Satin Hijau Lk Aceh.png" alt="Baju Satin Hijau Lk Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Satin Hijau</h3>
+                        <p>Baju satin hijau laki-laki</p>
+                        <span class="instrument-badge">Tersedia: 3 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Baju Satin Pink Lk Aceh.png" alt="Baju Satin Pink Lk Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Baju Satin Pink</h3>
+                        <p>Baju satin pink laki-laki</p>
+                        <span class="instrument-badge">Tersedia: 3 Unit</span>
+                    </div>
+                </div>
+                <div class="instrument-card">
+                    <div class="instrument-img-box"><img src="images/Celana Satin Hitam Aceh.png" alt="Celana Satin Hitam Aceh"></div>
+                    <div class="instrument-info">
+                        <h3>Celana Satin Hitam</h3>
+                        <p>Celana satin hitam penari Aceh</p>
+                        <span class="instrument-badge">Tersedia: 6 Unit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-nav">
+                <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
