@@ -32,19 +32,99 @@
 
             <a href="{{ $waUrl }}" target="_blank" rel="noopener" class="btn-wa" id="btnWA">Konfirmasi via WhatsApp</a>
 
-            <div class="ringkasan-box">
-                <h4>Detail Acara</h4>
-                <div class="biaya-row"><span>Paket</span><span>{{ $order->package->name }}</span></div>
-                <div class="biaya-row"><span>Add-on</span><span>{{ $order->addons->isEmpty() ? '-' : $order->addons->pluck('name')->implode(', ') }}</span></div>
-                <div class="biaya-row"><span>Tanggal acara</span><span>{{ \App\Support\Label::tanggal($order->event_date) }}</span></div>
-                @if ($order->event_time)
-                    <div class="biaya-row"><span>Jam acara</span><span>{{ substr($order->event_time, 0, 5) }}</span></div>
-                @endif
-                <div class="biaya-row"><span>Lokasi</span><span>{{ $order->event_location }}</span></div>
-                @if ($order->notes)
-                    <div class="biaya-row"><span>Catatan</span><span>{{ $order->notes }}</span></div>
-                @endif
-            </div>
+            @if ($order->package_id)
+                <div class="ringkasan-box">
+                    <h4>Detail Acara</h4>
+
+                    <div class="biaya-row">
+                        <span>Paket</span>
+                        <span>{{ $order->package?->name ?? '-' }}</span>
+                    </div>
+
+                    <div class="biaya-row">
+                        <span>Add-on</span>
+                        <span>{{ $order->addons->isEmpty() ? '-' : $order->addons->pluck('name')->implode(', ') }}</span>
+                    </div>
+
+                    <div class="biaya-row">
+                        <span>Tanggal acara</span>
+                        <span>{{ \App\Support\Label::tanggal($order->event_date) }}</span>
+                    </div>
+
+                    @if ($order->event_time)
+                        <div class="biaya-row">
+                            <span>Jam acara</span>
+                            <span>{{ substr($order->event_time, 0, 5) }}</span>
+                        </div>
+                    @endif
+
+                    <div class="biaya-row">
+                        <span>Lokasi</span>
+                        <span>{{ $order->event_location }}</span>
+                    </div>
+
+                    @if ($order->notes)
+                        <div class="biaya-row">
+                            <span>Catatan</span>
+                            <span>{{ $order->notes }}</span>
+                        </div>
+                    @endif
+                </div>
+            @endif
+
+            @if ($order->rentals->isNotEmpty())
+                <div class="ringkasan-box">
+                    <h4>Detail Rental</h4>
+
+                    @foreach ($order->rentals as $rental)
+                        <div class="biaya-row">
+                            <span>Nama barang</span>
+                            <span>{{ $rental->inventoryItem?->name ?? '-' }}</span>
+                        </div>
+
+                        <div class="biaya-row">
+                            <span>Kategori</span>
+                            <span>{{ $rental->inventoryItem?->category ?? '-' }}</span>
+                        </div>
+
+                        <div class="biaya-row">
+                            <span>Tanggal mulai</span>
+                            <span>{{ $rental->rental_start_date->format('d-m-Y') }}</span>
+                        </div>
+
+                        <div class="biaya-row">
+                            <span>Tanggal selesai</span>
+                            <span>{{ $rental->rental_end_date->format('d-m-Y') }}</span>
+                        </div>
+
+                        <div class="biaya-row">
+                            <span>Jumlah</span>
+                            <span>{{ $rental->quantity }}</span>
+                        </div>
+
+                        <div class="biaya-row">
+                            <span>Harga per hari</span>
+                            <span>{{ \App\Support\Label::rupiah($rental->rental_price) }}</span>
+                        </div>
+
+                        <div class="biaya-row total">
+                            <span>Subtotal rental</span>
+                            <span>{{ \App\Support\Label::rupiah($rental->subtotal) }}</span>
+                        </div>
+
+                        @if (!$loop->last)
+                            <hr>
+                        @endif
+                    @endforeach
+
+                    @if ($order->notes)
+                        <div class="biaya-row">
+                            <span>Catatan</span>
+                            <span>{{ $order->notes }}</span>
+                        </div>
+                    @endif
+                </div>
+            @endif      
 
             <div class="ringkasan-box">
                 <h4>Rincian Biaya</h4>

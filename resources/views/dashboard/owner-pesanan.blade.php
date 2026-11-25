@@ -93,13 +93,6 @@
     <p class="muted">
         Seluruh pesanan pelanggan yang tercatat di sistem.
     </p>
-    <div style="margin-bottom: 20px;">
-        <a href="{{ route('owner.pesanan.create') }}"
-        style="display: inline-block; background: #672b4a; color: white;
-                padding: 10px 18px; border-radius: 8px;">
-            + Buat Pesanan Pelanggan
-        </a>
-    </div>
 
     @if(session('status'))
         <div class="status-message">

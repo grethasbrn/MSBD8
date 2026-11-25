@@ -29,5 +29,7 @@ class Order extends Model
     public function payments(): HasMany    { return $this->hasMany(Payment::class); }
     public function assignments(): HasMany { return $this->hasMany(EventAssignment::class); }
     public function loans(): HasMany       { return $this->hasMany(ItemLoan::class); }
-    public function statusLogs(): HasMany  { return $this->hasMany(OrderStatusLog::class)->orderBy('id'); }
+    public function statusLogs(): HasMany  { return $this->hasMany(OrderStatusLog::class)->orderBy('id');}
+
+    public function rentals(): HasMany { return $this->hasMany(OrderRental::class);}
 }

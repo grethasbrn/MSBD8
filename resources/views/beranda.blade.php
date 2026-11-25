@@ -50,15 +50,31 @@
                 <p class="hero-description">
                     Temukan paket pertunjukan tari dan musik, kostum, serta perlengkapan untuk melengkapi acara spesial Anda dengan nuansa budaya nusantara.
                 </p>
+                
                 <div class="hero-buttons">
                     <a href="#paket" class="btn-primary">Lihat Paket</a>
+
                     @auth
-                        <a href="{{ route('pesan') }}" class="btn-primary">Buat Pesanan</a>
+                        @if (auth()->user()->role === 'owner')
+                            <a href="{{ route('owner.pesanan.create') }}" class="btn-primary">
+                                Buat Pesanan
+                            </a>
+                        @elseif (auth()->user()->role === 'customer')
+                            <a href="{{ route('pesan') }}" class="btn-primary">
+                                Buat Pesanan
+                            </a>
+                        @else
+                            <a href="{{ route('dashboard.' . auth()->user()->role) }}" class="btn-primary">
+                                Dashboard
+                            </a>
+                        @endif
                     @else
-                        <!-- Tamu yang belum login diminta masuk lewat pop-up -->
-                        <button type="button" class="btn-primary" id="btnBuatPesanan">Buat Pesanan</button>
+                        <button type="button" class="btn-primary" id="btnBuatPesanan">
+                            Buat Pesanan
+                        </button>
                     @endauth
                 </div>
+
             </div>
         </section>
 

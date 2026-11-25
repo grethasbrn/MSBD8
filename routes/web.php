@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\LaporanController;
 use App\Http\Controllers\Web\OwnerPesananController;
 use App\Http\Middleware\EnsureWebRole;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\RentalController;
 
 
 /* ---------- Halaman publik ---------- */
@@ -39,6 +40,9 @@ Route::middleware(EnsureWebRole::class . ':customer')->group(function () {
     Route::get('/pesanan/{order:code}', [PesananController::class, 'show'])->name('pesanan.show');
     Route::post('/pesanan/{order:code}/dp', [PesananController::class, 'unggahDp'])->name('pesanan.dp');
     Route::post('/pesanan/{order:code}/pelunasan', [PesananController::class, 'unggahPelunasan'])->name('pesanan.pelunasan');
+
+    Route::get('/rental', [RentalController::class, 'create']) ->name('rental.create');
+    Route::post('/rental', [RentalController::class, 'store']) ->name('rental.store');
 });
 
 /* ---------- Dashboard pekerja ---------- */
