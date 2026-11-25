@@ -27,7 +27,7 @@ class PesananController extends Controller
     public function show(Request $request, Order $order)
     {
         $this->milik($request, $order);
-        $order->load(['package', 'addons', 'payments' => fn ($q) => $q->orderBy('id')]);
+        $order->load(['package','addons','rentals.inventoryItem','payments' => fn ($q) => $q->orderBy('id'),]);
 
         $menunggu = fn (string $jenis) => $order->payments->where('type', $jenis)->where('status', 'pending')->isNotEmpty();
 
